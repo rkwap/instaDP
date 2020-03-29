@@ -44,7 +44,7 @@ def setCredentials():
             else:
                 with open('cookie', 'wb') as f:
                     pickle.dump(session.cookies, f)
-                print("Successfully logged in!")
+                print("Successfully logged in!\n")
         except requests.exceptions.ConnectionError:
             print("Connection refused")
 
@@ -74,13 +74,13 @@ def fetchDP(userID):
 
 def main():
     setCredentials()
-    username=input("\nEnter Username of the profile: ")
+    username=input("Enter Username of the profile: ")
     user_id = getID(username)
     file_url = fetchDP(user_id)
     print("\nDP URL:-",file_url)
-    down=input("\nWant to download(y/n)?(default=n)")
+    down=input("\nWant to download?(y/n)(default=n)")
     if(down=="y"):
-        fname = username+".jpg"
+        fname = username+".png"
         r = requests.get(file_url, stream=True)
         if r.ok:
             with open(fname, 'wb') as f:
@@ -88,5 +88,8 @@ def main():
                 print("\033[92m✔ Downloaded:\033[0m {}".format(fname))
         else:
             print("Cannot make connection to download image")
+    again=input("\nView another?(y/n)(default=n)\n")
+    if(again=="y"):
+        return main()
 if __name__ == "__main__":
     main()
