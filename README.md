@@ -1,5 +1,5 @@
 # instaDP
-Easy Python tool to View &amp; Download Full Sized Instagram Profile Pictures.
+Easy Python tool to View &amp; Download Full Sized (1080p not 320p) Instagram Profile Pictures.
 
 # Usage:
 python main.py<br/><br/>
